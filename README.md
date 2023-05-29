@@ -10,7 +10,7 @@
 
 
 # Information
-<details><summary>Click to expand</summary>
+
 
 ### Team Kiwi(Group 13) 
 - Kaisa Arumeel
@@ -24,18 +24,17 @@
 
 [Final presentation video](https://www.youtube.com/watch?v=Eti_41lDb20) for the project
 
-</details>
+
 
 # Project Background/ Problem Description
-<details><summary>Click to expand</summary>
+
 <br>
 
 The need for efficient, cost-effective, and non-invasive monitoring solutions has become increasingly important in various industries. The monitoring sonar system offers a reliable and accessible solution to security and environmental concerns. This system can be used in home security, industrial safety, parking assistance, environmental monitoring, retail analytics, and traffic management. This project builds on existing technologies and offers a customizable and expandable monitoring solution for different applications.
 
-</details>
 
 # Utilization
-<details><summary>Click to expand</summary>
+
 <br>
 
 Despite the fact that the system is mainly designed for "Home Security", it has multiple other potential applications:
@@ -45,10 +44,10 @@ Despite the fact that the system is mainly designed for "Home Security", it has 
 - Retail analytics: The system can track the movement of customers and provide valuable data for businesses
 - Traffic management: The system can detect and monitor traffic flow and help manage congestion.
 
-</details>
+
 
 # Project Description
-<details><summary>Click to expand</summary>
+
 <br>
 
 This project aims to implement a monitoring system for a designated area or sector. The system employs two kinds of sensors: two ultrasonic sensors, a temperature sensor, and an actuator in the form of a servo motor, all of which are connected to a Wio Seeed Terminal, a microcontroller.
@@ -59,12 +58,12 @@ The servo motor is responsible for continuously monitoring its position in degre
 
 To provide a user-friendly interface, the front-end utilizes SvelteJS front-end framework and other JavaScript libraries to subscribe to the topic `KiwiSonarData`. Upon receiving new information, the front-end parses and displays it in the form of a radar image that showcases the range and degree of any detected object relative to the sensors.
 
-![SonarOuterLook](https://git.chalmers.se/courses/dit113/2023/group-13/kiwi/-/raw/main/Resources/SonarPictures/SonrOuterLook.png)
+![SonarOuterLook](https://github.com/kaisaarumeel/KiWave-Sonar-System/blob/main/Resources/SonarPictures/SonrOuterLook.png)
 
-</details>
+
 
 # Used Technologies
-<details><summary>Click to expand</summary>
+
 <br>
 
 - C++
@@ -74,34 +73,37 @@ To provide a user-friendly interface, the front-end utilizes SvelteJS front-end 
 - SERVO MOTOR
 - ULTRASONIC SENSOR
 - TEMPERATURE SENSOR
+- SVELTE
+- HTML
+- CSS
 
-</details>
+
 
 # Documentation 
-<details><summary>Click to expand</summary>
+
 <br>
 
-[Documents](https://git.chalmers.se/courses/dit113/2023/group-13/kiwi/-/wikis/Home)
+[Documents](https://github.com/kaisaarumeel/KiWave-Sonar-System/wiki)
 
 
-[User Manual](https://git.chalmers.se/courses/dit113/2023/group-13/kiwi/-/raw/main/Resources/User%20Manual/User_Manual_-_KiWaveSonar.pdf)
+[User Manual](https://github.com/kaisaarumeel/KiWave-Sonar-System/blob/main/Resources/User%20Manual/User_Manual_-_KiWaveSonar.pdf)
 
 
-</details>
+
 
 # Installation and "Get Started"
-<details><summary>Click to expand</summary>
+
 
 ## Introduction
-<details><summary>Click to expand</summary>
+
 <br>
 
 This projetct builds a sonar using one Wio Seed Terminal (which is Arduino compatibale), two ultrasonic sensors, one temperature sensor, and one servo motor. These parts make up the hardware required to build the sonar. The hardware parts are controlled using a GUI made using SvelteJs front-end framework. The project uses the MQTT protocol (which belongs to the Publish-Subscribe architecture style ) to connect the GUI to the Wio Seeed Terminal.
 
-</details>
+
 
 ## Working with Wio Terminal and the sensors
-<details><summary>Click to expand</summary>
+
 <br>
 
 The Wio Seeed Terminal is an Arduino compatibale microcontroller. This means that its manipulation is done using C++ (or C) programming language. To easily upload code on the Wio Seeed Terminal, you can use the [Arduino IDE](https://www.arduino.cc/en/software). There are libraries implemented for different sensors and also for the MQTT protocol in the SonarController directory:
@@ -145,12 +147,12 @@ Second ultrasoic sensor pinout structure:
 Temperature sensor pinout structure.
 - Use the Multifunctional pinout under the joystick
 
-![SonarInnerLook](https://git.chalmers.se/courses/dit113/2023/group-13/kiwi/-/raw/main/Resources/SonarPictures/SonarInerStructure.png)
+![SonarInnerLook](https://github.com/kaisaarumeel/KiWave-Sonar-System/blob/main/Resources/SonarPictures/SonarInerStructure.png)
 
-</details>
+
 
 ## Working with the GUI
-<details><summary>Click to expand</summary>
+
 <br>
 
 SvelteJS was used to make the GUI for this project. In order to use SvelteJS you need to have [Node.js](https://nodejs.org/en/download) downloaded.
@@ -171,10 +173,9 @@ If you navigate to the `src` subdirectory, you can find the different components
 
 Under `components` subdirectory, there is another directory called `mqtt` which conatins the `MQTTHandler.svelte` component. This component contains the publish and subscribe methods needed for the MQTT to work on the GUI.
 
-</details>
 
 ## System Architecture
-<details><summary> Click to expand </summary>
+
 <br>
 
 Our system, as mentioned before, made use of the MQTT protocol to create the connection between the web application and the Wio Seeed Terminal. 
@@ -185,22 +186,20 @@ MQTT is a protocol that belongs to the Publish-Subscribe architecture style. The
 
 Now that the base of our system's architecture is explained, you can dig deeper into our project and see how our team made use of open source Publish-Subscribe libraries. Here is a component diagram that depicts the architecture of our system. Note that the broker is shown as a component, eventhough it plays the role of a connector:
 
-![ComponentDiagram](https://git.chalmers.se/courses/dit113/2023/group-13/kiwi/-/raw/main/Resources/ComponentDiagram/ComponentDiagram.png)
+![image](https://github.com/kaisaarumeel/KiWave-Sonar-System/assets/113339617/01d3e50e-4954-4228-8f5e-af2ae3347599)
 
 As you can see in the diagram, We have two main components that communicate to each other via the broker. The App component (which is a subsystem itself), subscribes to the topic "KiwiSonarData" to receive the data that the Wio Seeed Terminal has published to the mentioned topic. The App component also publishes user's input to the KiwiSonarCommand topic. Then, the Wio Seeed Terminal subscribes to this topic and manipulates the way the sensors should work according to the user's input.
 
-</details>
 
-</details>
 
 # Testing
-<details><summary>Click to expand</summary>
+
 <br>
 
 Unit tests were made for the GUI in this project. The Jest testing framework was used to make unit tests that checked the correctness of the commands sent by the GUI and the way componenets were rendered. This section contains information regarding configuring Jest on a svelte project and the commands used to run the tests. Note that when you use `npm i` after forking our project and pulling from the remote repository, you can already use the testing commands on our project as Jest is already configured on it. The Jest configuration part is useful for those who want to configure Jest on their own projects.
 
 ## Jest configuration
-<details><summary>Click to expand</summary>
+
 <br>
 
 Needed libraries:
@@ -252,12 +251,10 @@ sources: https://www.roboleary.net/2021/11/18/svelte-app-testing-jest.html
 
 After following the instructions (in case you are configuring Jest on your own project), you should be able to use the command `npm run test` to run the tests that you have written for your project. Note that a test file should be named after the component that your are testing. For example, if you have a component called `Button.svelte` then the test file should be called `Button.spec.js` or `Button.test.js`. As you can see, the test file has `.spec.js` or `.test.js`. This is needed for Jest to be able to find the test files which are written in JavaScript.
 
-</details>
 
-</details>
 
 # CI/CD
-<details><summary>Click to expand</summary>
+
 <br>
 
 CI/CD stands for "continuous intergration" and "continuous development". We use the GitLab piplelines to continuously test code that is committed and and then deploy the code, if it passes the tests. The pipeline is written in `.gitlab-ci.yml` file which is usually uploaded on the root of the project (good practice to put it there). As you have noticed by now, this is a YAML file which contains commands that are executed by the GitLab runner(s). GitLab runners are computers that have Linux as their Operating System. These runners pull your project and look for the CI file and run the commands that you have given there. To install packages and programs on the runner to run your commands, most projects (our project too) use docker images. You can find docker images for the applications (programs) that you need in order to test and/or deploy your project from [docker hub](https://hub.docker.com/). Each block of commands that is executed by the GitLab runner is called a job. Note that you need to use a runner that can handle docker images. You can see the available runners under CI/CD in settings. You can see the result of your pipline under the CI/CD Pipelines section.
@@ -272,10 +269,10 @@ You can customize your `.gitlab-ci.yml` file in many ways:
 
 This is just a glimpse into what you can do using CI/CD in GitLab. Our project uses CI/CD for automated testing and deployment. It is a simple pipeline. You can use this as a starting point. You can read and learn more about the sophisticated and advanced features of GitLab CI/CD [here](https://docs.gitlab.com/ee/ci/).
 
-</details>
+
 
 # Team Members' Main Contributions
-<details><summary> Click to expand </summary>
+
 <br>
 
 Kaisa Arumeel:
@@ -344,7 +341,7 @@ János Litkei:
 - Worked on the deployment of the frontend on a VPS, as part of the CI/CD pipelines.
 - Edited the user manual.
  
-</details>
+
 
 
 
